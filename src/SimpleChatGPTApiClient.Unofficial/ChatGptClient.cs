@@ -59,7 +59,7 @@ public class ChatGptClient
         var response = await httpClient.SendAsync(request);
         var json = await response.Content.ReadAsStringAsync();
 
-        var result = JsonSerializer.Deserialize<ChatGptResponseDto>(json, _serializerOptions);
+        var result = JsonSerializer.Deserialize<CompletionDto>(json, _serializerOptions);
         return result.Choices.ElementAt(0).Text;
     }
 
